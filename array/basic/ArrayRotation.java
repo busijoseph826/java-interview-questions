@@ -1,3 +1,4 @@
+package array.basic;
 import java.util.*;
 public class ArrayRotation {
     public static void main(String[] args) {

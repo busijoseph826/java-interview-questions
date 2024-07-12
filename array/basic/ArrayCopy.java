@@ -1,3 +1,4 @@
+package array.basic;
 import java.util.*;
 public class ArrayCopy {
     public static void main(String[] args) {
