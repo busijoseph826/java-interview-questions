@@ -14,13 +14,14 @@ public class Main
 {
 	public static void main(String[] args) {
 		Main list = new Main();
-		list.add(11);
+		list.add(19);
 		list.add(11);
 		list.add(13);
+		list.add(19);
 		list.add(13);
-		list.add(15);
 		list.show();
-		list.removeDuplicates();
+		list.removeDuplicatesUnSortedList()
+		//list.removeDuplicates();
 		list.show();
 		//list.middle();
 		//list.klast(2);
@@ -101,6 +102,25 @@ public class Main
 	        else{
 	            current = current.next;
 	        }
+	    }
+	}
+	//remove duplicates from a unsorted list
+	public void removeDuplicatesUnSortedList(){
+	    if(head == null){
+	        return;
+	    }
+	    Node current = head;
+	    Node prev = null;
+	    HashSet<Integer> seen = new HashSet<>();
+	    while(current!=null){
+	        if(seen.contains(current.data)){
+	            prev.next = current.next;
+	        }
+	        else{
+	            seen.add(current.data);
+	            prev = current;
+	        }
+	        current = current.next;
 	    }
 	}
 	
