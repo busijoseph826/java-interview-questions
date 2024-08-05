@@ -50,6 +50,18 @@ public class Main
 	    }
 	    System.out.println("null");
 	}
+	public Node reverse(Node head) {
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        return prev;
+       }
 	public int length(){
 	    Node temp = head;
 	    int c = 0;
@@ -123,5 +135,39 @@ public class Main
 	        current = current.next;
 	    }
 	}
+	//Checking if a Linked List is a Palindrome
+	public boolean isPalindrome() {
+        if (head == null || head.next == null) {
+            return true;
+        }
+
+        // Find the middle of the list
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // Reverse the second half
+        Node secondHalf = reverse(slow);
+        Node firstHalf = head;
+
+        // Compare the first and second half
+        Node copyOfSecondHalf = secondHalf;
+        while (secondHalf != null) {
+            if (secondHalf.data != firstHalf.data) {
+                reverse(copyOfSecondHalf); // Optional: Restore the original list
+                return false;
+            }
+            firstHalf = firstHalf.next;
+            secondHalf = secondHalf.next;
+        }
+
+        // Optional: Restore the original list
+        reverse(copyOfSecondHalf);
+
+        return true;
+    }
 	
 }
