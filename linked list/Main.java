@@ -20,7 +20,8 @@ public class Main
 		list.add(19);
 		list.add(13);
 		list.show();
-		list.removeDuplicatesUnSortedList()
+		list.delectloop();
+		//list.removeDuplicatesUnSortedList()
 		//list.removeDuplicates();
 		list.show();
 		//list.middle();
@@ -169,5 +170,24 @@ public class Main
 
         return true;
     }
+	// delect loop in Linked List 
+	public boolean detectLoop(Node head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                return true;
+            }
+        }
+
+        return false;
 	
 }
